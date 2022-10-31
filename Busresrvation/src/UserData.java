@@ -14,7 +14,7 @@ public class UserData {
         System.out.println("\nEnter user name : ");
         String st=scan1.next();
         int flag=0;
-        for(int i=0;i<userlist.size();i+=3)
+        for(int i=0;i<userlist.size();i++)
         {
             if(st.equals(userlist.get(i).get(0).get(0))){
                 System.out.println("\nUsername is already exist ");
