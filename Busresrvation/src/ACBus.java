@@ -2,7 +2,6 @@ import java.util.*;
 import java.time.*;
 public class ACBus {
     LocalDate date=LocalDate.now();
-    Main det=new Main();
     static ArrayList<LocalDate> datelist=new ArrayList<>();
     static ArrayList<String> Acdet=new ArrayList<String>();
     static ArrayList<Integer> Busno=new ArrayList<>();
@@ -32,17 +31,20 @@ public class ACBus {
         }
     }
     }
-    int setdetails(String From,String To,LocalDate date){
+    static int busavl=0;
+    int showbusdetails(String From,String To,LocalDate date){
         int ind=0;
-        System.out.println("\nAvailable bus list for "+From+" to "+To+" is \n\nBusNumber\tTiming\t\tAvailable Seats ");
-        System.out.println("--------------------------------------------------------------");
+        busavl=0;
         for(int i=0;i<7;i++)
         {
             if(date.compareTo(datelist.get(i))==0){
+                System.out.println("\nAvailable bus list for "+From+" to "+To+" is \n\nBusNumber\tTiming\t\tAvailable Seats ");
+                System.out.println("--------------------------------------------------------------");
                 for(int j=i*Acdet.size();j<(i+1)*Acdet.size();j++){
                     if(from.get(j).equalsIgnoreCase(From) && to.get(j).equalsIgnoreCase(To) && avlseats.get(j)!=0){
                         System.out.println(Busno.get(j)+"\t\t"+time.get(j)+"\t\t"+avlseats.get(j));
                         System.out.println("--------------------------------------------------------------");
+                        busavl=1;
                     }
                 }
                 ind=i;
@@ -50,6 +52,9 @@ public class ACBus {
             }
         }
         return ind;
+    }
+    int checkBuslistIsAvailable(){
+        return busavl;
     }
     void updateAvlSeatsdetails(String busno,String seats,String date){
         int index1=0,index2=Busno.indexOf(Integer.parseInt(busno));
@@ -69,3 +74,4 @@ public class ACBus {
         us.getticket();
     }
 }
+
