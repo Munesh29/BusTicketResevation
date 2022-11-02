@@ -6,21 +6,25 @@ public class Useraccess {
         while(run)
         {
         UserData u=new UserData();
+        Boolean check=true;
+        while(check){
         System.out.println("\nIf you are new user type \"yes\" or \"no\"");
             String st=scan.next();
         if(st.equalsIgnoreCase("Yes"))
         {
+            check=false;
             u.insertdetails();
         }
         else if(st.equalsIgnoreCase("no"))
         {
+            check=false;
             boolean c=u.checkdetails();
             if(c){}
             else{u.insertdetails();}
         }
+        else{check=true;}}
         boolean again=true;
-        while(again){
-            
+        while(again){ 
         System.out.println("\nIf you want to booking ticket enter \"1\"\nIf you want to cancel Ticket enter \"2\"");
         System.out.println("If you want to see your previous Ticket Booking list enter \"3\"\nIf you want to logout enter \"0\"");
         String p=scan.next().trim();
@@ -38,8 +42,9 @@ public class Useraccess {
         else if(p.equals("0")){
             again=false;
         }
-        }
-        }  
+        else{again=true;}
+    }
+    }  
     }
 }
 
