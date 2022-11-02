@@ -1,6 +1,6 @@
 import java.util.*;
 import java.time.*;
-public class NonACBus extends Main{
+public class NonACBus{
     LocalDate date1=LocalDate.now();
     Main det=new Main();
     static ArrayList<LocalDate> datelist1=new ArrayList<>();
@@ -32,17 +32,20 @@ public class NonACBus extends Main{
         }
     }
     }
-    int setdetails(String From,String To,LocalDate date){
+    static int busavl=0;
+    int showbusdetails(String From,String To,LocalDate date){
         int ind=0;
-        System.out.println("\nAvailable bus list for "+From+" to "+To+" is \n\nBusNumber\tTiming\t\tAvailable Seats ");
-        System.out.println("--------------------------------------------------------------");
+        busavl=0;
         for(int i=0;i<7;i++)
         {
             if(date.compareTo(datelist1.get(i))==0){
+                System.out.println("\nAvailable bus list for "+From+" to "+To+" is \n\nBusNumber\tTiming\t\tAvailable Seats ");
+                System.out.println("--------------------------------------------------------------");
                 for(int j=i*noAcdet.size();j<(i+1)*noAcdet.size();j++){
                     if(from1.get(j).equalsIgnoreCase(From) && to1.get(j).equalsIgnoreCase(To) && avlseats1.get(j)!=0){
                         System.out.println(Busno1.get(j)+"\t\t"+time1.get(j)+"\t\t"+avlseats1.get(j));
                         System.out.println("--------------------------------------------------------------");
+                        busavl=1;
                     }
                 }
                 ind=i;
@@ -50,6 +53,9 @@ public class NonACBus extends Main{
             }
         }
         return ind;
+    }
+    int checkBuslistIsAvailable(){
+        return busavl;
     }
     void updateAvlSeatdetails(String busno,String seats,String date){
         int index1=0,index2=Busno1.indexOf(Integer.parseInt(busno));
