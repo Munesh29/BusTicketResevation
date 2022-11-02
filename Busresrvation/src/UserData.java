@@ -22,12 +22,8 @@ public class UserData {
                 break;
             }
         }
-        if(flag==0){
-        logindetails.add(st);
-        olduser=false;}
-        else{
-            olduser=true;
-        }
+        if(flag==0){ logindetails.add(st); olduser=false;}
+        else{ olduser=true; }
         }
         System.out.println("\nEnter password : ");
         logindetails.add(scan1.next());
@@ -51,10 +47,7 @@ public class UserData {
             if(userlist.get(i).get(0).get(0).equals(username))
             {
                 if(userlist.get(i).get(0).get(1).equals(passwrd))
-                {
-                    p=1;
-                    userindex=i;
-                }
+                { p=1; userindex=i; }
             }
         }
             if(p==1){
@@ -84,21 +77,12 @@ public class UserData {
                     if(p==0){
                         System.out.println("\nInvalid emailid or phone number\nIf you want re-enter user name and password enter \"1\"\nEnetr \"2\" for create new user id");
                         int num=scan1.nextInt();
-                        if(num==1)
-                        {
-                            reCheck=true;
-                        }
-                        else if(num==2){
-                            ForCreateNewuser=false;
-                            reCheck=false;
-                        }
+                        if(num==1){  reCheck=true;}
+                        else if(num==2){ ForCreateNewuser=false; reCheck=false;}
                     }
 
                 }
-                else if(str.equalsIgnoreCase("no"))
-                {
-                    reCheck=true;
-                }
+                else if(str.equalsIgnoreCase("no")){reCheck=true;}
             }
         }
         return ForCreateNewuser;
@@ -139,8 +123,7 @@ public class UserData {
             System.out.println("\nForm: "+userlist.get(userindex).get(i).get(5)+" To:"+userlist.get(userindex).get(i).get(6)+"\tNumber of Seats:"+userlist.get(userindex).get(i).get(1)+"\tAmount : "+userlist.get(userindex).get(i).get(10));
             System.out.println("\n------------------------------------------------------------------------");
         }
-        if(flag==0)
-        {System.out.println("\nYour Ticket list is Empty");}
+        if(flag==0){System.out.println("\nYour Ticket list is Empty");}
     }
     static int ticketindex; 
     boolean showandcheckTicketId(String id){
@@ -198,7 +181,6 @@ public class UserData {
                 userlist.get(userindex).get(ticketindex).set(10,String.valueOf(Integer.parseInt(userlist.get(userindex).get(ticketindex).get(10))-seatcount*150));
             }
             userlist.get(userindex).get(ticketindex).set(1,String.valueOf(Integer.parseInt(userlist.get(userindex).get(ticketindex).get(1))-seatcount));
-           
             System.out.println("\n------------------------------------------------------------------------");
             System.out.println("\nBooking Date : "+userlist.get(userindex).get(ticketindex).get(2)+"\tBooking Time : "+userlist.get(userindex).get(ticketindex).get(8));
             System.out.println("\nTicketID : "+userlist.get(userindex).get(ticketindex).get(9)+"\t\tUsername : "+userlist.get(userindex).get(0).get(0)+"\t\tBusType: "+userlist.get(userindex).get(ticketindex).get(4));
